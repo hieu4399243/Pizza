@@ -1,17 +1,19 @@
-import { StyleSheet, Image } from "react-native";
-import { Text, View } from "@/src/components/Themed";
+import { StyleSheet, Text, View, Image } from "react-native";
+import React from "react";
+import Colors from "../constants/Colors";
 import products from "@/assets/data/products";
-import Colors from "@/src/constants/Colors";
-import ProductListItem from "@/src/components/ProductListItem";
 
-export default function TabOneScreen() {
+const ProductListItem = ({products}) => {
   return (
-    <View>
-      <ProductListItem products={products[0]}/>
-      <ProductListItem products={products[1]}/>
+    <View style={styles.container}>
+      <Image source={{uri: products.image}} style={styles.image} resizeMode="contain" />
+      <Text style={styles.title}>{products.name}</Text>
+      <Text style={styles.price}>${products.price.toFixed(2)}</Text>
     </View>
   );
-}
+};
+
+export default ProductListItem;
 
 const styles = StyleSheet.create({
   container: {
