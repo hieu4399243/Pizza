@@ -1,14 +1,14 @@
 import { StyleSheet, Image } from "react-native";
 import { Text, View } from "@/src/components/Themed";
-import products from "@/assets/data/products";
+import product from "@/assets/data/products";
 import Colors from "@/src/constants/Colors";
 import ProductListItem from "@/src/components/ProductListItem";
 
 export default function TabOneScreen() {
   return (
     <View>
-      <ProductListItem products={products[0]}/>
-      <ProductListItem products={products[1]}/>
+      <ProductListItem product={product[0]}/>
+      <ProductListItem product={product[1]} />
     </View>
   );
 }
