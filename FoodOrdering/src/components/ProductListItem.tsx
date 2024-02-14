@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     overflow: "hidden",
+    flex: 1
   },
   image: {
     width: "100%",

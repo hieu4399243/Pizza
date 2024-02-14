@@ -1,4 +1,4 @@
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, FlatList } from "react-native";
 import { Text, View } from "@/components/Themed";
 import product from "@assets/data/products";
 import Colors from "src/constants/Colors";
@@ -7,8 +7,13 @@ import ProductListItem from "src/components/ProductListItem";
 export default function TabOneScreen() {
   return (
     <View>
-      <ProductListItem product={product[0]}/>
-      <ProductListItem product={product[1]} />
+      <FlatList
+      data={product}
+      renderItem={({ item }) => <ProductListItem product={item} />}
+      numColumns={2}
+      contentContainerStyle={{ gap: 10, padding: 10 }}
+      columnWrapperStyle={{ gap: 10 }}
+    />
     </View>
   );
 }
@@ -19,6 +24,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     overflow: "hidden",
+    flex: 1
   },
   image: {
     width: "100%",
