@@ -1,8 +1,8 @@
 import { StyleSheet, Image } from "react-native";
-import { Text, View } from "@/src/components/Themed";
-import product from "@/assets/data/products";
-import Colors from "@/src/constants/Colors";
-import ProductListItem from "@/src/components/ProductListItem";
+import { Text, View } from "@/components/Themed";
+import product from "@assets/data/products";
+import Colors from "src/constants/Colors";
+import ProductListItem from "src/components/ProductListItem";
 
 export default function TabOneScreen() {
   return (
