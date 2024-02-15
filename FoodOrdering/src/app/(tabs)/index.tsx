@@ -1,44 +1,9 @@
-import { StyleSheet, Image, FlatList } from "react-native";
-import { Text, View } from "@/components/Themed";
-import product from "@assets/data/products";
-import Colors from "src/constants/Colors";
-import ProductListItem from "src/components/ProductListItem";
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { Redirect } from 'expo-router'
 
-export default function TabOneScreen() {
-  return (
-    <View>
-      <FlatList
-        data={product}
-        renderItem={({ item }) => <ProductListItem product={item} />}
-        numColumns={2}
-        contentContainerStyle={{ padding: 10 }}
-        columnWrapperStyle={{ justifyContent: 'space-between', gap: 10 }}
-      />
-    </View>
-  );
+export default function index() {
+  return <Redirect href={'/menu/'} />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 10,
-    overflow: "hidden",
-    flex:1
-  },
-  image: {
-    width: "100%",
-    aspectRatio: 1,
-    alignSelf: "center",
-  },
-  title: {
-    fontWeight: "600",
-    fontSize: 18,
-    marginVertical: 10,
-  },
-  price: {
-    color: Colors.light.tint,
-    fontWeight: "bold",
-    marginTop: "auto",
-  },
-});
+const styles = StyleSheet.create({})

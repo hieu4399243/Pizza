@@ -12,7 +12,7 @@ type ProductsListItemProps = {
 const ProductListItem = ({ product }: ProductsListItemProps) => {
   return (
     <View style={styles.container}>
-      <Link href={`/${product.id}`}>
+      <Link href={`/(tabs)/menu/${product.id}`}>
         <Image
           source={{
             uri:
