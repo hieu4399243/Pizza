@@ -2,16 +2,27 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import Colors from "../constants/Colors";
 import product from "@assets/data/products";
-import {Product} from '../types';
+import { Product } from "../types";
+import { Link } from "expo-router";
 
 type ProductsListItemProps = {
-    product : Product;
+  product: Product;
 };
 
-const ProductListItem = ({product} : ProductsListItemProps) => {
+const ProductListItem = ({ product }: ProductsListItemProps) => {
   return (
     <View style={styles.container}>
-      <Image source={{ uri: product.image || 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/default.png' }} style={styles.image} resizeMode="contain" />
+      <Link href={`/${product.id}`}>
+        <Image
+          source={{
+            uri:
+              product.image ||
+              "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/default.png",
+          }}
+          style={styles.image}
+          resizeMode="contain"
+        />
+      </Link>
       <Text style={styles.title}>{product.name}</Text>
       <Text style={styles.price}>${product.price.toFixed(2)}</Text>
     </View>
@@ -26,7 +37,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     overflow: "hidden",
-    flex: 1
+    flex: 1,
   },
   image: {
     width: "100%",

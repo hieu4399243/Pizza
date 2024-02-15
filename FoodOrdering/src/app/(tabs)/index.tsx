@@ -8,12 +8,12 @@ export default function TabOneScreen() {
   return (
     <View>
       <FlatList
-      data={product}
-      renderItem={({ item }) => <ProductListItem product={item} />}
-      numColumns={2}
-      contentContainerStyle={{ gap: 10, padding: 10 }}
-      columnWrapperStyle={{ gap: 10 }}
-    />
+        data={product}
+        renderItem={({ item }) => <ProductListItem product={item} />}
+        numColumns={2}
+        contentContainerStyle={{ padding: 10 }}
+        columnWrapperStyle={{ justifyContent: 'space-between', gap: 10 }}
+      />
     </View>
   );
 }
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     overflow: "hidden",
-    flex: 1
+    flex:1
   },
   image: {
     width: "100%",
