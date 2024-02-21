@@ -12,3 +12,7 @@ const PrductDetails = () => {
 }
 
 export default PrductDetails;
+
+const styles = StyleSheet.create({
+  
+})
