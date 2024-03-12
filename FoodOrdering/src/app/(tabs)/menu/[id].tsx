@@ -14,11 +14,11 @@ import Button from "@/components/Button";
 
 const sizes: PizzaSize[] = ["L", "M", "S", "XL"];
 
-const product = products[0];
 
 const PrductDetails = () => {
   const [selectedSize, setSelectedSize] = useState("M");
   const { id } = useLocalSearchParams();
+  const product = products.find((p) => p.id.toString() ===id);
   const addToCart = () => {
     if (!product) {
       return;
