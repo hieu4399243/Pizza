@@ -1,10 +1,36 @@
-import { createContext, useContext } from "react";
+import { CartItem, Product } from "@/types";
+import { PropsWithChildren, createContext, useContext, useState } from "react";
 
-const CartContext = createContext({});
+type CartType = {
+    items: CartItem[],
+    addItem: (product: Product, size: CartItem['size']) => void;
+}
 
-const CartProvider = ({children}) =>{
+
+const CartContext = createContext<CartType>({
+    items: [],
+    addItem: () => {}
+});
+
+
+
+const CartProvider = ({children} : PropsWithChildren) =>{
+    const [items, setItems] = useState<CartItem[]>([]);
+    const addItem = (product: Product, size: CartItem['size']) =>{
+        const newItem = {
+            id: '1',
+            product_id: product.id,
+            product,
+            size,
+            quantity: 2
+        }
+
+        setItems([newItem, ...items]);
+    }
+    console.log(items);
+
     return (
-        <CartContext.Provider value={{items: [1,2,3], onAddItem: () => {}}}>
+        <CartContext.Provider value={{items ,  addItem}}>
             {children}
         </CartContext.Provider>
     )
