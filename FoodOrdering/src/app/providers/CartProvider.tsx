@@ -7,24 +7,26 @@ type CartType = {
   items: CartItem[];
   addItem: (product: Product, size: CartItem["size"]) => void;
   updateQuantity: (itemId: string, amount: -1 | 1) => void;
-  total: number
+  total: number;
 };
 
 const CartContext = createContext<CartType>({
   items: [],
   addItem: () => {},
   updateQuantity: () => {},
-  total: 0
+  total: 0,
 });
 
 const CartProvider = ({ children }: PropsWithChildren) => {
   const [items, setItems] = useState<CartItem[]>([]);
 
   const addItem = (product: Product, size: CartItem["size"]) => {
-    const existItems = items.find((item) => item.product === product && item.size === size);
-    if(existItems){
-        updateQuantity(existItems, 1);
-        return;
+    const existItems = items.find(
+      (item) => item.product === product && item.size === size
+    );
+    if (existItems) {
+      updateQuantity(existItems, 1);
+      return;
     }
 
     const newItem = {
@@ -38,16 +40,18 @@ const CartProvider = ({ children }: PropsWithChildren) => {
     setItems([newItem, ...items]);
   };
 
-
   const updateQuantity = (itemId, amount: -1 | 1) => {
-    const updateItems = items.map((item) => 
+    const updateItems = items.map((item) =>
       item.id != itemId ? item : { ...item, quantity: item.quantity + amount }
     );
     const filter = updateItems.filter((item) => item.quantity > 0);
     setItems(filter);
   };
 
-  const total = items.reduce((sum, item) => sum+=item.product.price * item.quantity, 0);
+  const total = items.reduce(
+    (sum, item) => (sum += item.product.price * item.quantity),
+    0
+  );
   console.log(items);
   return (
     <CartContext.Provider value={{ items, addItem, updateQuantity, total }}>
