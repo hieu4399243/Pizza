@@ -5,12 +5,14 @@ import product from "@assets/data/products";
 import { CartItem, Product } from "../types";
 import { Link } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
+import { useCart } from '@/app/providers/CartProvider';
 
 type CartsListItemProps = {
     cartItem: CartItem;
   };
 
 const CartListItem = ({cartItem}:CartsListItemProps) => {
+  const {updateQuantity} = useCart();
   return (
     <View style={styles.container}>
       <Image
@@ -27,7 +29,7 @@ const CartListItem = ({cartItem}:CartsListItemProps) => {
       </View>
       <View style={styles.quantitySelector}>
         <FontAwesome
-          //onPress={() => updateQuantity(cartItem.id, -1)}
+          onPress={() => updateQuantity(cartItem.id, -1)}
           name="minus"
           color="gray"
           style={{ padding: 5 }}
@@ -35,7 +37,7 @@ const CartListItem = ({cartItem}:CartsListItemProps) => {
 
         <Text style={styles.quantity}>{cartItem.quantity}</Text>
         <FontAwesome
-          //onPress={() => updateQuantity(cartItem.id, 1)}
+          onPress={() => updateQuantity(cartItem.id, 1)}
           name="plus"
           color="gray"
           style={{ padding: 5 }}

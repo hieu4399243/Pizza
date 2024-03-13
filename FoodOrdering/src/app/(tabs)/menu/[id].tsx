@@ -7,7 +7,7 @@ import {
   Pressable,
 } from "react-native";
 import React, { useContext, useState } from "react";
-import { Stack, useLocalSearchParams } from "expo-router";
+import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import products from "@assets/data/products";
 import { PizzaSize } from "@/types";
 import Button from "@/components/Button";
@@ -17,6 +17,7 @@ const sizes: PizzaSize[] = ["L", "M", "S", "XL"];
 
 
 const PrductDetails = () => {
+  const router = useRouter();
   const [selectedSize, setSelectedSize] = useState<PizzaSize>("M");
   const { id } = useLocalSearchParams();
   const product = products.find((p) => p.id.toString() ===id);
@@ -26,6 +27,7 @@ const PrductDetails = () => {
       return;
     }
     addItem(product, selectedSize);
+    router.push('/cart');
   };
 
   
